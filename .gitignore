@@ -103,7 +103,8 @@ celerybeat.pid
 
 # Environments
 .env
-.artifacts
+.artifacts/
+catboost_info/
 .venv
 env/
 venv/
