@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Exam Performance</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Roboto+Slab:wght@400;700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Wood desk background */
+      body {
+        background-color: #5c4033;
+        background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+        font-family: "Open Sans", sans-serif;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      /* Notebook paper effect */
+      .exam-paper {
+        background-color: #fdfbf7;
+        width: 100%;
+        max-width: 650px;
+        padding: 40px 40px 40px 80px; /* Extra left padding for the margin */
+        border-radius: 5px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        position: relative;
+
+        /* Ruled lines for notebook paper */
+        background-image: linear-gradient(transparent 95%, #a6cae6 95%);
+        background-size: 100% 2em;
+        line-height: 2em;
+      }
+
+      /* Red margin line */
+      .exam-paper::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50px;
+        width: 2px;
+        background-color: #ff9999;
+        z-index: 1;
+      }
+
+      /* Headers styling */
+      h1,
+      legend {
+        font-family: "Roboto Slab", serif;
+        color: #1a3c34;
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 2;
+        line-height: 1.2;
+      }
+
+      h1 {
+        font-size: 28px;
+        border-bottom: 2px dashed #1a3c34;
+        padding-bottom: 10px;
+      }
+
+      legend {
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      /* Form elements */
+      .mb-3 {
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 2;
+        background-color: rgba(
+          253,
+          251,
+          247,
+          0.8
+        ); /* Slight background to hide lines behind text */
+        padding: 5px 10px;
+        border-radius: 4px;
+      }
+
+      .form-label {
+        font-weight: 600;
+        color: #444;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #b3c2bf;
+        border-radius: 6px;
+        font-family: "Open Sans", sans-serif;
+        font-size: 14px;
+        box-sizing: border-box;
+        background-color: #fff;
+        transition: border-color 0.3s;
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: #f4d03f; /* Pencil yellow focus */
+        box-shadow: 0 0 5px rgba(244, 208, 63, 0.5);
+      }
+
+      /* "No. 2 Pencil" Button */
+      .btn-primary {
+        width: 100%;
+        padding: 15px;
+        background-color: #f4ca16;
+        color: #222;
+        border: 2px solid #d4af37;
+        border-radius: 6px;
+        font-size: 18px;
+        font-family: "Roboto Slab", serif;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 10px;
+      }
+
+      .btn-primary:hover {
+        background-color: #ffd700;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Graded Result Area */
+      .result-box {
+        text-align: center;
+        margin-top: 30px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .result-box h2 {
+        font-family: "Caveat", cursive; /* Looks like a teacher's handwriting */
+        font-size: 42px;
+        color: #cc0000; /* Teacher's red pen */
+        transform: rotate(-3deg);
+        margin: 0;
+        background-color: transparent;
+        line-height: 1;
+      }
+
+      /* Adjust placeholder color */
+      ::placeholder {
+        color: #aaa;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="exam-paper">
+      <h1>Student Exam Performance Indicator</h1>
+
+      <form action="{{ url_for('predict_datapoint') }}" method="post">
+        <legend>Performance Prediction Form</legend>
+
+        <div class="mb-3">
+          <label class="form-label">Gender</label>
+          <select class="form-control" name="gender" required>
+            <option class="placeholder" selected disabled value="">
+              Select your Gender
+            </option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Race or Ethnicity</label>
+          <select class="form-control" name="ethnicity" required>
+            <option class="placeholder" selected disabled value="">
+              Select Ethnicity
+            </option>
+            <option value="group A">Group A</option>
+            <option value="group B">Group B</option>
+            <option value="group C">Group C</option>
+            <option value="group D">Group D</option>
+            <option value="group E">Group E</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Parental Level of Education</label>
+          <select
+            class="form-control"
+            name="parental_level_of_education"
+            required
+          >
+            <option class="placeholder" selected disabled value="">
+              Select Parent Education
+            </option>
+            <option value="associate's degree">Associate's degree</option>
+            <option value="bachelor's degree">Bachelor's degree</option>
+            <option value="high school">High school</option>
+            <option value="master's degree">Master's degree</option>
+            <option value="some college">Some college</option>
+            <option value="some high school">Some high school</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Lunch Type</label>
+          <select class="form-control" name="lunch" required>
+            <option class="placeholder" selected disabled value="">
+              Select Lunch Type
+            </option>
+            <option value="free/reduced">Free/Reduced</option>
+            <option value="standard">Standard</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Test Preparation Course</label>
+          <select class="form-control" name="test_preparation_course" required>
+            <option class="placeholder" selected disabled value="">
+              Select Course Status
+            </option>
+            <option value="none">None</option>
+            <option value="completed">Completed</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Reading Score (out of 100)</label>
+          <input
+            class="form-control"
+            type="number"
+            name="reading_score"
+            placeholder="Enter your Reading Score"
+            min="0"
+            max="100"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Writing Score (out of 100)</label>
+          <input
+            class="form-control"
+            type="number"
+            name="writing_score"
+            placeholder="Enter your Writing Score"
+            min="0"
+            max="100"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <input
+            class="btn btn-primary"
+            type="submit"
+            value="Calculate Predicted Math Score"
+          />
+        </div>
+      </form>
+
+      {% if results %}
+      <div class="result-box">
+        <h2>Grade Prediction: {{ results }}</h2>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>

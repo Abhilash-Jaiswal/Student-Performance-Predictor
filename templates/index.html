@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MathScore Predictor | PTM Portal</title>
+    <style>
+      /* Base Reset & Typography */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        background-color: #f8fafc;
+        color: #334155;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* Navigation Bar */
+      .navbar {
+        background-color: #0f172a;
+        color: #ffffff;
+        padding: 1rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar-brand {
+        font-size: 1.5rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .navbar-brand span {
+        color: #fbbf24; /* Academic Gold */
+      }
+
+      /* Hero Section (Main Home Area) */
+      .hero {
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        color: white;
+        padding: 6rem 2rem;
+        text-align: center;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 5px solid #fbbf24;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        font-weight: 800;
+        letter-spacing: -1px;
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        color: #cbd5e1;
+        max-width: 700px;
+        margin: 0 auto 2.5rem auto;
+      }
+
+      /* The Call-to-Action Button */
+      .cta-button {
+        display: inline-block;
+        background-color: #fbbf24;
+        color: #78350f;
+        padding: 1.2rem 2.5rem;
+        text-decoration: none;
+        font-size: 1.25rem;
+        font-weight: bold;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 15px -3px rgba(251, 191, 36, 0.3);
+        border: 2px solid transparent;
+      }
+
+      .cta-button:hover {
+        background-color: #f59e0b;
+        transform: translateY(-3px);
+        box-shadow: 0 20px 25px -5px rgba(251, 191, 36, 0.4);
+        color: #451a03;
+      }
+
+      /* PTM Information Section */
+      .info-section {
+        padding: 5rem 5%;
+        background-color: #ffffff;
+      }
+
+      .info-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .info-header h2 {
+        font-size: 2.5rem;
+        color: #0f172a;
+      }
+
+      .card-container {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .card {
+        background: #f8fafc;
+        padding: 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        max-width: 350px;
+        text-align: center;
+        border-top: 4px solid #3b82f6;
+        transition: transform 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
+      .card h3 {
+        color: #1e293b;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+      }
+
+      /* Footer */
+      .footer {
+        background-color: #0f172a;
+        color: #94a3b8;
+        text-align: center;
+        padding: 2rem;
+        margin-top: auto;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+        .hero p {
+          font-size: 1.1rem;
+        }
+        .card-container {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-brand">📚 Edu<span>Predict</span></div>
+      <div style="font-weight: 600">Parent-Teacher Portal</div>
+    </nav>
+
+    <header class="hero">
+      <h1>Shape Their Future with Data</h1>
+      <p>
+        Welcome to the Parent-Teacher Meeting (PTM) Dashboard. Utilize our
+        advanced AI model to analyze student performance and accurately predict
+        upcoming Mathematics exam marks.
+      </p>
+
+      <a href="http://127.0.0.1:5000/predictdata" class="cta-button">
+        📊 Predict Math Marks Now
+      </a>
+    </header>
+
+    <section class="info-section">
+      <div class="info-header">
+        <h2>Why Use Our Predictor?</h2>
+        <p>
+          Empowering educators and parents to make informed academic decisions.
+        </p>
+      </div>
+
+      <div class="card-container">
+        <div class="card">
+          <h3>For Parents</h3>
+          <p>
+            Gain insights into your child's academic trajectory in Mathematics.
+            Understand their strengths and identify areas where they might need
+            additional support at home.
+          </p>
+        </div>
+
+        <div class="card" style="border-top-color: #fbbf24">
+          <h3>For Teachers</h3>
+          <p>
+            Prepare for PTMs with data-driven insights. Generate custom
+            predictions to guide constructive conversations about student goals
+            and future lesson planning.
+          </p>
+        </div>
+
+        <div class="card" style="border-top-color: #10b981">
+          <h3>Proactive Action</h3>
+          <p>
+            Don't wait for final grades. By predicting marks early, you can
+            implement tutoring, change study habits, or request extra credit
+            assignments before it's too late.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>
+        &copy; 2026 EduPredict School Systems. Designed for collaborative
+        learning.
+      </p>
+    </footer>
+  </body>
+</html>
