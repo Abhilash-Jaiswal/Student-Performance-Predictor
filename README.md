@@ -1,95 +1,109 @@
-# Student Performance Prediction ML Project
+# Student Marks Prediction
 
 ## Overview
 
-This project uses machine learning to predict student academic performance based on various features including study habits, attendance, previous grades, and demographic factors.
+Student Marks Prediction is a Flask-based web application designed for a school-themed environment, ideal for parent-teacher meeting use cases and student performance insights. The app lets users enter student details, predicts Maths marks using a trained machine learning model, and displays results clearly on the same page.
 
-## Dataset
+## Screenshots
 
-The dataset contains student records with the following features:
+![Homepage](ProjectScreenshots/Screenshot%202026-06-28%20223051.png)
 
-- Study hours per week
-- Attendance rate
-- Previous GPA
-- Assignment completion rate
-- Test scores
-- Class participation
-- Demographic information
+![Prediction Form](ProjectScreenshots/Screenshot%202026-06-28%20223317.png)
+
+![Results](ProjectScreenshots/Screenshot%202026-06-28%20223330.png)
 
 ## Features
 
-- Data preprocessing and feature engineering
-- Exploratory data analysis (EDA)
-- Multiple machine learning models (Linear Regression, Random Forest, Gradient Boosting, etc.)
-- Model evaluation and comparison
-- Hyperparameter tuning
-- Prediction and performance visualization
+- User-friendly web interface for easy navigation
+- Input form for student details and academic variables
+- Prediction of Maths marks using a regression model
+- Results displayed on the same page for quick review
 
-## Requirements
+## Model Details
 
-- Python 3.8+
-- pandas
-- numpy
-- scikit-learn
-- matplotlib
-- seaborn
-- jupyter
+The project uses a regression-based machine learning model to predict student Maths marks. The model pipeline includes:
 
-## Installation
+- Handling categorical variables through encoding
+- Applying `StandardScaler` for normalization
+- Splitting data into train and test sets
+- Training a regression model to estimate marks
+
+Model accuracy is approximately **79%** on the test data.
+
+## Setup & Commands
+
+1. Create and activate a Python virtual environment:
+
+```bash
+python -m venv venv
+```
+
+On Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+On macOS/Linux:
+
+```bash
+source venv/bin/activate
+```
+
+2. Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
+If Flask or any required library is missing, add it with:
+
+```bash
+pip install Flask
+```
+
+Or install a specific package manually:
+
+```bash
+pip install scikit-learn pandas numpy
+```
+
+3. Run the Flask app:
+
+```bash
+python app.py
+```
+
+4. Git workflow commands:
+
+```bash
+git clone <repository-url>
+cd <repository-folder>
+git add .
+git commit -m "Add Student Marks Prediction project"
+git push origin main
+```
+
 ## Usage
 
-1. Load and explore the data:
+1. Activate the virtual environment.
+2. Install dependencies.
+3. Start the app with `python app.py`.
+4. Open your browser and navigate to:
 
-   ```bash
-   jupyter notebook exploratory_analysis.ipynb
-   ```
-
-2. Train models:
-
-   ```bash
-   python train_model.py
-   ```
-
-3. Make predictions:
-   ```bash
-   python predict.py --input data.csv --output predictions.csv
-   ```
-
-## Results
-
-The best performing model achieves:
-
-- R² Score: [Score]
-- RMSE: [Value]
-- MAE: [Value]
-
-## Project Structure
-
-```
-.
-├── data/
-│   ├── raw/
-│   └── processed/
-├── notebooks/
-│   └── exploratory_analysis.ipynb
-├── src/
-│   ├── preprocess.py
-│   ├── train_model.py
-│   └── predict.py
-├── models/
-├── README.md
-└── requirements.txt
+```text
+http://127.0.0.1:5000/
 ```
 
-## Author
+5. Fill in student details and submit the form to view the predicted Maths mark.
 
-[Your Name]
+## Future Improvements
 
-## License
+- Add charts and visual performance reports for each student
+- Provide summary dashboards for class-level insights
+- Improve prediction accuracy with advanced models such as ensemble regressors or gradient boosting
+- Expand input options to include attendance, study habits, and parent engagement data
 
-MIT
+## Notes
+
+This project is built to support a school-style performance review workflow, making it useful for teachers, parents, and administrators looking to understand student Maths performance quickly.
